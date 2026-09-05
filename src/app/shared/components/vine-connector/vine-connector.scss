@@ -1,0 +1,19 @@
+:host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.vine-connector {
+  width: 100%;
+  height: 100%;
+}
+
+path {
+  fill: none;
+  stroke: var(--color-secondary);
+  stroke-width: 0.6;
+  stroke-linecap: round;
+}

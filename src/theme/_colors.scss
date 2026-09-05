@@ -1,0 +1,35 @@
+@use 'sass:color';
+@use 'sass:map';
+
+$primary-base: #f6821f;
+$secondary-base: #64bb46;
+
+$tint-weights: (
+  50: 90%,
+  100: 80%,
+  200: 60%,
+  300: 40%,
+  400: 20%,
+);
+
+$shade-weights: (
+  600: 15%,
+  700: 30%,
+  800: 45%,
+  900: 60%,
+  950: 75%,
+);
+
+@function generate-scale($base-color) {
+  $scale: (500: $base-color);
+
+  @each $step, $weight in $tint-weights {
+    $scale: map.merge($scale, ($step: color.mix(white, $base-color, $weight)));
+  }
+
+  @each $step, $weight in $shade-weights {
+    $scale: map.merge($scale, ($step: color.mix(black, $base-color, $weight)));
+  }
+
+  @return $scale;
+}

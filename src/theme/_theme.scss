@@ -1,0 +1,17 @@
+@use './colors';
+
+$primary-scale: colors.generate-scale(colors.$primary-base);
+$secondary-scale: colors.generate-scale(colors.$secondary-base);
+
+:root {
+  @each $step, $value in $primary-scale {
+    --color-primary-#{$step}: #{$value};
+  }
+
+  @each $step, $value in $secondary-scale {
+    --color-secondary-#{$step}: #{$value};
+  }
+
+  --color-primary: var(--color-primary-500);
+  --color-secondary: var(--color-secondary-500);
+}

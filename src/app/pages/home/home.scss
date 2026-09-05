@@ -1,0 +1,74 @@
+:host {
+  display: block;
+}
+
+.home__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+.home__logo {
+      width: min(350px, 60%);
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.home__tagline {
+  margin: 0;
+  color: var(--color-secondary-800);
+  font-size: 1.1rem;
+}
+
+.home__subtitle {
+  margin: 0;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--color-secondary-700);
+}
+
+.home__tagline-accent {
+  font-family: 'Caveat', cursive;
+  color: var(--color-primary);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.home__products {
+  position: relative;
+}
+
+.home__footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: calc(1.5rem + 6px) 1rem 1.5rem;
+  background: var(--color-secondary);
+  color: #fff;
+  text-align: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 6px;
+    background: var(--color-primary);
+  }
+}
+
+.home__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1;
+}

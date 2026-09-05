@@ -1,0 +1,17 @@
+:host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.circle-background {
+  width: 100%;
+  height: 100%;
+}
+
+.circle-background--right {
+  transform: scaleX(-1);
+}

@@ -3,21 +3,39 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "target": "ES2022",
-    "module": "preserve"
+    "lib": ["ESNext", "dom"],
+    "module": "preserve",
+    "paths": {
+      "@environments": ["${configDir}/src/environments/environment.ts"],
+      "@pages/*": ["${configDir}/src/app/pages/*"],
+      "@components/*": ["${configDir}/src/app/shared/components/*"],
+      "@directives/*": ["${configDir}/src/app/shared/directives/*"],
+      "@pipes/*": ["${configDir}/src/app/shared/pipes/*"],
+      "@common/*": ["${configDir}/src/common/*"],
+      "@domain/*": ["${configDir}/src/domain/*"],
+      "@services/*": ["${configDir}/src/services/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true
+    "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
+    "strictTemplates": true
   },
   "files": [],
   "references": [

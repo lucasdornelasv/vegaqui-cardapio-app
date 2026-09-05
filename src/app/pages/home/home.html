@@ -1,0 +1,32 @@
+<header class="home__header">
+  <img class="home__logo" [src]="logoSrc" alt="VegAqui" />
+  <p class="home__tagline">
+    Ser <strong>SAUDÁVEL</strong> nunca foi tão
+    <span class="home__tagline-accent">prático!</span>
+  </p>
+  <p class="home__subtitle">Experimente e surpreenda-se</p>
+</header>
+
+<section class="home__products">
+  <vine-connector [sides]="productSides" />
+
+  @for (product of products; track $index) {
+    <product-card [product]="product" [imagePosition]="productSides[$index]" />
+  }
+</section>
+
+<footer class="home__footer">
+  <p class="home__address">{{ contact.address }}</p>
+  <a class="home__link" [href]="phoneHref" target="_blank" rel="noopener">
+    <social-icon icon="phone" />
+    {{ contact.phone | phone }}
+  </a>
+  <a class="home__link" [href]="whatsappHref" target="_blank" rel="noopener">
+    <social-icon icon="whatsapp" />
+    {{ contact.whatsapp | phone }}
+  </a>
+  <a class="home__link" [href]="instagramHref" target="_blank" rel="noopener">
+    <social-icon icon="instagram" />
+    &#64;{{ contact.instagram }}
+  </a>
+</footer>

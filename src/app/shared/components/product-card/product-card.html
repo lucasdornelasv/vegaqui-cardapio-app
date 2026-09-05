@@ -1,0 +1,14 @@
+<article class="product-card" [class.product-card--right]="imagePosition() === 'right'">
+  <div class="product-card__media">
+    <circle-background [position]="imagePosition()" />
+    <img class="product-card__image" [src]="product().images[0]" [alt]="product().title" />
+  </div>
+
+  <div class="product-card__content">
+    <h3 class="product-card__title">{{ product().title }}</h3>
+    <p class="product-card__description">{{ product().description }}</p>
+    <p class="product-card__weight">{{ product().weightAndQuantity }}</p>
+    <p class="product-card__price">{{ product().price | currency: 'BRL' }}</p>
+    <a class="product-card__order" [href]="orderHref()" target="_blank" rel="noopener">Peça Já</a>
+  </div>
+</article>
