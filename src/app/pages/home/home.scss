@@ -39,8 +39,17 @@
   font-weight: 700;
 }
 
-.home__products {
+.home__category {
+  margin-top: 2rem;
+
+  &:first-of-type {
+    margin-top: 1rem;
+  }
+}
+
+.home__category-products {
   position: relative;
+  margin-top: 0.5rem;
 }
 
 .home__footer {

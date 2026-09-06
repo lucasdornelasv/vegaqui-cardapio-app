@@ -1,0 +1,7 @@
+{
+  "images": ["imagem-1.jpeg"],
+  "title": "Kit Personalizado",
+  "description": "Kit personalizado com uma seleção dos nossos produtos: geleia, paçoca de amendoim, beliscão de goiabada, amanteigado com chocolate e biscoito de café com chocolate. Os itens podem ser alterados de acordo com a disponibilidade na loja.",
+  "weightAndQuantity": "1 geleia, 1 paçoca de amendoim, 1 beliscão de goiabada, 1 amanteigado com chocolate e 1 biscoito de café com chocolate",
+  "price": 70
+}

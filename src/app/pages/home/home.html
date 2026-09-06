@@ -7,13 +7,19 @@
   <p class="home__subtitle">Experimente e surpreenda-se</p>
 </header>
 
-<section class="home__products">
-  <vine-connector [sides]="productSides" />
+@for (category of categories; track category.title) {
+  <section class="home__category">
+    <category-banner [title]="category.title" />
 
-  @for (product of products; track $index) {
-    <product-card [product]="product" [imagePosition]="productSides[$index]" />
-  }
-</section>
+    <div class="home__category-products">
+      <vine-connector [sides]="category.sides" />
+
+      @for (product of category.products; track $index) {
+        <product-card [product]="product" [imagePosition]="category.sides[$index]" />
+      }
+    </div>
+  </section>
+}
 
 <footer class="home__footer">
   <p class="home__address">{{ contact.address }}</p>

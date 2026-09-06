@@ -1,6 +1,12 @@
 .app-shell {
+  position: relative;
   max-width: 700px;
   min-height: 100vh;
   margin: 0 auto;
   background: var(--color-secondary-100);
+}
+
+.app-shell__content {
+  position: relative;
+  z-index: 1;
 }

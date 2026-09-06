@@ -20,6 +20,7 @@
     "lib": ["ESNext", "dom"],
     "module": "preserve",
     "paths": {
+      "@public/*": ["${configDir}/public/*"],
       "@environments": ["${configDir}/src/environments/environment.ts"],
       "@pages/*": ["${configDir}/src/app/pages/*"],
       "@components/*": ["${configDir}/src/app/shared/components/*"],
