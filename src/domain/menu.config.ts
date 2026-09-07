@@ -28,28 +28,72 @@ function toProduct(folder: string, info: ProductInfo): Product {
   };
 }
 
+const feijoadaProduct = toProduct('feijoada', feijoada);
+const coxinhaDeJacaProduct = toProduct('coxinha_jaca', coxinhaDeJaca);
+const conservaDeJiloProduct = toProduct('conserva_jiló', conservaDeJilo);
+const geleiaDeAmeixaProduct = toProduct('geleia_ameixa', geleiaDeAmeixa);
+const beliscaoDeGoiabadaProduct = toProduct('beliscao_goiabada', beliscaoDeGoiabada);
+const biscoitoAmanteigadoProduct = toProduct('biscoito_amanteigado', biscoitoAmanteigado);
+const chimichurriProduct = toProduct('chimichurri', chimichurri);
+const farofaArtesanalErvasFinasProduct = toProduct(
+  'farofa_artesanal_ervas_finas',
+  farofaArtesanalErvasFinas,
+);
+const hamburguerDeJacaCongeladoProduct = toProduct(
+  'hamburguer_jaca_congelado',
+  hamburguerDeJacaCongelado,
+);
+const kitBiscoitoComGeleiaProduct = toProduct('kit_biscoito_geleia', kitBiscoitoComGeleia);
+const kitPersonalizadoProduct = toProduct('kit_personalizado', kitPersonalizado);
+const kitSalgadinhosCongeladosProduct = toProduct(
+  'kit_salgadinhos_congelados',
+  kitSalgadinhosCongelados,
+);
+const kombuchaDeGengibreProduct = toProduct('kombucha_gengibre', kombuchaDeGengibre);
+const lemonPepperProduct = toProduct('lemon_pepper', lemonPepper);
+const molhoDePimentaProduct = toProduct('molho_pimenta', molhoDePimenta);
+const pimentaProduct = toProduct('pimenta', pimenta);
+const pizzaDeCalabresaAceboladaProduct = toProduct(
+  'pizza_calabreza_acebolada',
+  pizzaDeCalabresaAcebolada,
+);
+const pizzaDeFrangoComCatupiryProduct = toProduct(
+  'pizza_frango_catupiry',
+  pizzaDeFrangoComCatupiry,
+);
+const temperoCaseiroDeAlhoProduct = toProduct('tempero_caseiro_alho', temperoCaseiroDeAlho);
+
 // A ordem dos produtos abaixo define a ordem em que eles aparecem em cada categoria.
-const products: Product[] = [
-  toProduct('feijoada', feijoada),
-  toProduct('coxinha_jaca', coxinhaDeJaca),
-  toProduct('conserva_jiló', conservaDeJilo),
-  toProduct('geleia_ameixa', geleiaDeAmeixa),
-  toProduct('beliscao_goiabada', beliscaoDeGoiabada),
-  toProduct('biscoito_amanteigado', biscoitoAmanteigado),
-  toProduct('chimichurri', chimichurri),
-  toProduct('farofa_artesanal_ervas_finas', farofaArtesanalErvasFinas),
-  toProduct('hamburguer_jaca_congelado', hamburguerDeJacaCongelado),
-  toProduct('kit_biscoito_geleia', kitBiscoitoComGeleia),
-  toProduct('kit_personalizado', kitPersonalizado),
-  toProduct('kit_salgadinhos_congelados', kitSalgadinhosCongelados),
-  toProduct('kombucha_gengibre', kombuchaDeGengibre),
-  toProduct('lemon_pepper', lemonPepper),
-  toProduct('molho_pimenta', molhoDePimenta),
-  toProduct('pimenta', pimenta),
-  toProduct('pizza_calabreza_acebolada', pizzaDeCalabresaAcebolada),
-  toProduct('pizza_frango_catupiry', pizzaDeFrangoComCatupiry),
-  toProduct('tempero_caseiro_alho', temperoCaseiroDeAlho),
+const emporioProducts: Product[] = [
+  conservaDeJiloProduct,
+  geleiaDeAmeixaProduct,
+  temperoCaseiroDeAlhoProduct,
+  chimichurriProduct,
+  lemonPepperProduct,
+  molhoDePimentaProduct,
+  beliscaoDeGoiabadaProduct,
+  pimentaProduct,
+  farofaArtesanalErvasFinasProduct,
 ];
+
+const congeladosProducts: Product[] = [
+  hamburguerDeJacaCongeladoProduct,
+  coxinhaDeJacaProduct,
+  kitSalgadinhosCongeladosProduct,
+  pizzaDeFrangoComCatupiryProduct,
+  pizzaDeCalabresaAceboladaProduct,
+  feijoadaProduct,
+];
+
+// TODO: ainda sem categoria definitiva; por ora agrupados em Personalizados.
+const personalizadosProducts: Product[] = [
+  kitPersonalizadoProduct,
+  biscoitoAmanteigadoProduct,
+  kitBiscoitoComGeleiaProduct,
+  kombuchaDeGengibreProduct,
+];
+
+const sobEncomendaProducts: Product[] = [];
 
 export const MENU_CONFIG: MenuConfig = {
   contact: {
@@ -61,9 +105,9 @@ export const MENU_CONFIG: MenuConfig = {
   orderMessageTemplate: 'Oi, vim pelo site da Veg Aqui e fiquei interessado no {{produto}}',
   // A ordem das categorias abaixo define a ordem em que elas aparecem no cardápio.
   categories: [
-    { title: 'Congelados', products },
-    { title: 'Empório', products },
-    { title: 'Personalizados', products },
-    { title: 'Sob Encomenda', products },
+    { title: 'Congelados', products: congeladosProducts },
+    { title: 'Empório', products: emporioProducts },
+    { title: 'Personalizados', products: personalizadosProducts },
+    { title: 'Sob Encomenda', products: sobEncomendaProducts },
   ],
 };

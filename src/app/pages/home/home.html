@@ -7,8 +7,10 @@
   <p class="home__subtitle">Experimente e surpreenda-se</p>
 </header>
 
+<category-nav [categories]="categories" />
+
 @for (category of categories; track category.title) {
-  <section class="home__category">
+  <section class="home__category" [id]="category.slug">
     <category-banner [title]="category.title" />
 
     <div class="home__category-products">

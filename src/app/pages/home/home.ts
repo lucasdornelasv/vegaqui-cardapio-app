@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { instagramLink, phoneLink, whatsappLink } from '@common/contact-links.util';
 import { HorizontalSide } from '@common/horizontal-side';
+import { slugify } from '@common/slug.util';
 import { CategoryBannerComponent } from '@components/category-banner/category-banner';
+import { CategoryNavComponent } from '@components/category-nav/category-nav';
 import { ProductCardComponent } from '@components/product-card/product-card';
 import { VineConnectorComponent } from '@components/vine-connector/vine-connector';
 import { MENU_CONFIG } from '@domain/menu.config';
@@ -11,6 +13,7 @@ import { SocialIconComponent } from '@components/social-icon/social-icon';
 
 interface CategoryViewModel {
   title: string;
+  slug: string;
   products: Product[];
   sides: HorizontalSide[];
 }
@@ -23,6 +26,7 @@ function byTitle(a: { title: string }, b: { title: string }): number {
   selector: 'home',
   imports: [
     CategoryBannerComponent,
+    CategoryNavComponent,
     ProductCardComponent,
     VineConnectorComponent,
     PhonePipe,
@@ -37,6 +41,7 @@ export class HomeComponent {
   protected readonly contact = MENU_CONFIG.contact;
 
   protected readonly categories: CategoryViewModel[] = [...MENU_CONFIG.categories]
+    .filter((category) => category.products.length > 0)
     .sort(byTitle)
     .map((category) => {
       const products = [...category.products].sort(byTitle);
@@ -44,7 +49,7 @@ export class HomeComponent {
         index % 2 === 0 ? 'left' : 'right',
       );
 
-      return { title: category.title, products, sides };
+      return { title: category.title, slug: slugify(category.title), products, sides };
     });
 
   protected readonly phoneHref = phoneLink(this.contact.phone);

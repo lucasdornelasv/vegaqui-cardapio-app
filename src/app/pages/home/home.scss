@@ -42,6 +42,10 @@
 .home__category {
   margin-top: 2rem;
 
+  // Compensa a altura da category-nav fixa (ver .category-nav--stuck) ao
+  // rolar até a seção via âncora de URL ou clique numa aba.
+  scroll-margin-top: 96px;
+
   &:first-of-type {
     margin-top: 1rem;
   }

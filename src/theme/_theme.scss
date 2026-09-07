@@ -14,4 +14,6 @@ $secondary-scale: colors.generate-scale(colors.$secondary-base);
 
   --color-primary: var(--color-primary-500);
   --color-secondary: var(--color-secondary-500);
+
+  --app-max-width: 700px;
 }

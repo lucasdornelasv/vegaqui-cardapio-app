@@ -1,0 +1,25 @@
+<ng-template #tabs>
+  <ul class="category-nav__list">
+    @for (category of categories(); track category.slug) {
+      <li class="category-nav__item">
+        <a
+          class="category-nav__tab"
+          [class.category-nav__tab--active]="activeSlug() === category.slug"
+          [href]="'#' + category.slug"
+          (click)="onTabClick($event, category.slug)"
+        >
+          {{ category.title }}
+        </a>
+      </li>
+    }
+  </ul>
+</ng-template>
+
+<nav class="category-nav" #inFlowNav>
+  <ng-container [ngTemplateOutlet]="tabs" />
+</nav>
+
+<nav class="category-nav category-nav--fixed" [class.category-nav--visible]="showFixedNav()" [inert]="!showFixedNav()">
+  <img class="category-nav__logo" [src]="logoSrc" alt="VegAqui" />
+  <ng-container [ngTemplateOutlet]="tabs" />
+</nav>

@@ -1,6 +1,6 @@
 .app-shell {
   position: relative;
-  max-width: 700px;
+  max-width: var(--app-max-width);
   min-height: 100vh;
   margin: 0 auto;
   background: var(--color-secondary-100);
