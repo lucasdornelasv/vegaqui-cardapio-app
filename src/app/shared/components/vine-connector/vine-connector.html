@@ -1,3 +1,4 @@
+@if(!!viewBoxHeight()){
 <svg
   class="vine-connector"
   [attr.viewBox]="'0 0 100 ' + viewBoxHeight()"
@@ -6,3 +7,4 @@
 >
   <path [attr.d]="path()" />
 </svg>
+}

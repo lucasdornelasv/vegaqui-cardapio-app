@@ -5,7 +5,10 @@ import { slugify } from '@common/slug.util';
 import { CategoryBannerComponent } from '@components/category-banner/category-banner';
 import { CategoryNavComponent } from '@components/category-nav/category-nav';
 import { ProductCardComponent } from '@components/product-card/product-card';
+import { VineConnectableProductDirective } from '@components/vine-connector/vine-connectable-product.directive';
 import { VineConnectorComponent } from '@components/vine-connector/vine-connector';
+import { VineConnectorContextDirective } from '@components/vine-connector/vine-connector-context.directive';
+import { VineOriginDirective } from '@components/vine-connector/vine-origin.directive';
 import { MENU_CONFIG } from '@domain/menu.config';
 import { Product } from '@domain/menu.model';
 import { PhonePipe } from '@pipes/phone.pipe';
@@ -28,7 +31,10 @@ function byTitle(a: { title: string }, b: { title: string }): number {
     CategoryBannerComponent,
     CategoryNavComponent,
     ProductCardComponent,
+    VineConnectableProductDirective,
     VineConnectorComponent,
+    VineConnectorContextDirective,
+    VineOriginDirective,
     PhonePipe,
     SocialIconComponent,
   ],

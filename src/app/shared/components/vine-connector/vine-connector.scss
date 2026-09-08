@@ -9,6 +9,9 @@
 .vine-connector {
   width: 100%;
   height: 100%;
+  // O ponto de partida (origem, tipicamente o título da categoria) fica
+  // acima deste contêiner — sem isso o SVG recortaria esse trecho da linha.
+  overflow: visible;
 }
 
 path {

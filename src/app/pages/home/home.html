@@ -10,15 +10,19 @@
 <category-nav [categories]="categories" />
 
 @for (category of categories; track category.title) {
-  <section class="home__category" [id]="category.slug">
-    <category-banner [title]="category.title" />
+  <section class="home__category" [id]="category.slug" vineConnectorContext>
+    <category-banner [title]="category.title" vineOrigin />
 
     <div class="home__category-products">
-      <vine-connector [sides]="category.sides" />
-
       @for (product of category.products; track $index) {
-        <product-card [product]="product" [imagePosition]="category.sides[$index]" />
+        <product-card
+          [product]="product"
+          [imagePosition]="category.sides[$index]"
+          vineConnectableProduct
+        />
       }
+
+      <vine-connector />
     </div>
   </section>
 }
