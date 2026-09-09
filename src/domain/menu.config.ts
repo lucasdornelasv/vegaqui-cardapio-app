@@ -2,6 +2,10 @@ import { MenuConfig, Product, ProductInfo } from './menu.model';
 
 import feijoada from '@public/produtos/feijoada/info.json';
 import coxinhaDeJaca from '@public/produtos/coxinha_jaca/info.json';
+import centoCoxinhaDeJaca from '@public/produtos/cento_coxinha_jaca/info.json';
+import centoEsfihaDeBerinjelaComAlcaparras from '@public/produtos/cento_esfiha_berinjela_alcaparras/info.json';
+import centoPastelDeBrocolisComTomateSeco from '@public/produtos/cento_pastel_brocolis_tomate_seco/info.json';
+import empadaDePalmito from '@public/produtos/empada_palmito/info.json';
 import conservaDeJilo from '@public/produtos/conserva_jiló/info.json';
 import geleiaDeAmeixa from '@public/produtos/geleia_ameixa/info.json';
 import beliscaoDeGoiabada from '@public/produtos/beliscao_goiabada/info.json';
@@ -62,6 +66,16 @@ const pizzaDeFrangoComCatupiryProduct = toProduct(
   pizzaDeFrangoComCatupiry,
 );
 const temperoCaseiroDeAlhoProduct = toProduct('tempero_caseiro_alho', temperoCaseiroDeAlho);
+const centoCoxinhaDeJacaProduct = toProduct('cento_coxinha_jaca', centoCoxinhaDeJaca);
+const centoEsfihaDeBerinjelaComAlcaparrasProduct = toProduct(
+  'cento_esfiha_berinjela_alcaparras',
+  centoEsfihaDeBerinjelaComAlcaparras,
+);
+const centoPastelDeBrocolisComTomateSecoProduct = toProduct(
+  'cento_pastel_brocolis_tomate_seco',
+  centoPastelDeBrocolisComTomateSeco,
+);
+const empadaDePalmitoProduct = toProduct('empada_palmito', empadaDePalmito);
 
 // A ordem dos produtos abaixo define a ordem em que eles aparecem em cada categoria.
 const emporioProducts: Product[] = [
@@ -74,6 +88,7 @@ const emporioProducts: Product[] = [
   beliscaoDeGoiabadaProduct,
   pimentaProduct,
   farofaArtesanalErvasFinasProduct,
+  kombuchaDeGengibreProduct,
 ];
 
 const congeladosProducts: Product[] = [
@@ -85,15 +100,15 @@ const congeladosProducts: Product[] = [
   feijoadaProduct,
 ];
 
-// TODO: ainda sem categoria definitiva; por ora agrupados em Personalizados.
-const personalizadosProducts: Product[] = [
+const personalizadosSobEncomendaProducts: Product[] = [
   kitPersonalizadoProduct,
   biscoitoAmanteigadoProduct,
   kitBiscoitoComGeleiaProduct,
-  kombuchaDeGengibreProduct,
+  centoCoxinhaDeJacaProduct,
+  centoEsfihaDeBerinjelaComAlcaparrasProduct,
+  centoPastelDeBrocolisComTomateSecoProduct,
+  empadaDePalmitoProduct,
 ];
-
-const sobEncomendaProducts: Product[] = [];
 
 export const MENU_CONFIG: MenuConfig = {
   contact: {
@@ -107,7 +122,6 @@ export const MENU_CONFIG: MenuConfig = {
   categories: [
     { title: 'Congelados', products: congeladosProducts },
     { title: 'Empório', products: emporioProducts },
-    { title: 'Personalizados', products: personalizadosProducts },
-    { title: 'Sob Encomenda', products: sobEncomendaProducts },
+    { title: 'Personalizados/Sob Encomenda', products: personalizadosSobEncomendaProducts },
   ],
 };

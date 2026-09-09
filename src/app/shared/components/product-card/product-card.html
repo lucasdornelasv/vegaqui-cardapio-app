@@ -1,7 +1,9 @@
 <article class="product-card" [class.product-card--right]="imagePosition() === 'right'">
   <div class="product-card__media">
     <circle-background [position]="imagePosition()" />
-    <img class="product-card__image" [src]="product().images[0]" [alt]="product().title" />
+    @if (product().images.length) {
+      <img class="product-card__image" [src]="product().images[0]" [alt]="product().title" />
+    }
   </div>
 
   <div class="product-card__content">
