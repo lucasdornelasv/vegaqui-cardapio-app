@@ -15,10 +15,12 @@ import farofaArtesanalErvasFinas from '@public/produtos/farofa_artesanal_ervas_f
 import hamburguerDeJacaCongelado from '@public/produtos/hamburguer_jaca_congelado/info.json';
 import kitBiscoitoComGeleia from '@public/produtos/kit_biscoito_geleia/info.json';
 import kitPersonalizado from '@public/produtos/kit_personalizado/info.json';
+import kitPersonalizado2 from '@public/produtos/kit_personalizado_2/info.json';
 import kitSalgadinhosCongelados from '@public/produtos/kit_salgadinhos_congelados/info.json';
 import kombuchaDeGengibre from '@public/produtos/kombucha_gengibre/info.json';
 import lemonPepper from '@public/produtos/lemon_pepper/info.json';
 import molhoDePimenta from '@public/produtos/molho_pimenta/info.json';
+import pacocaDeAmendoim from '@public/produtos/pacoca_amedoim/info.json';
 import pimenta from '@public/produtos/pimenta/info.json';
 import pizzaDeCalabresaAcebolada from '@public/produtos/pizza_calabreza_acebolada/info.json';
 import pizzaDeFrangoComCatupiry from '@public/produtos/pizza_frango_catupiry/info.json';
@@ -49,6 +51,7 @@ const hamburguerDeJacaCongeladoProduct = toProduct(
 );
 const kitBiscoitoComGeleiaProduct = toProduct('kit_biscoito_geleia', kitBiscoitoComGeleia);
 const kitPersonalizadoProduct = toProduct('kit_personalizado', kitPersonalizado);
+const kitPersonalizado2Product = toProduct('kit_personalizado_2', kitPersonalizado2);
 const kitSalgadinhosCongeladosProduct = toProduct(
   'kit_salgadinhos_congelados',
   kitSalgadinhosCongelados,
@@ -56,6 +59,7 @@ const kitSalgadinhosCongeladosProduct = toProduct(
 const kombuchaDeGengibreProduct = toProduct('kombucha_gengibre', kombuchaDeGengibre);
 const lemonPepperProduct = toProduct('lemon_pepper', lemonPepper);
 const molhoDePimentaProduct = toProduct('molho_pimenta', molhoDePimenta);
+const pacocaDeAmendoimProduct = toProduct('pacoca_amedoim', pacocaDeAmendoim);
 const pimentaProduct = toProduct('pimenta', pimenta);
 const pizzaDeCalabresaAceboladaProduct = toProduct(
   'pizza_calabreza_acebolada',
@@ -89,6 +93,7 @@ const emporioProducts: Product[] = [
   pimentaProduct,
   farofaArtesanalErvasFinasProduct,
   kombuchaDeGengibreProduct,
+  pacocaDeAmendoimProduct,
 ];
 
 const congeladosProducts: Product[] = [
@@ -102,6 +107,7 @@ const congeladosProducts: Product[] = [
 
 const personalizadosSobEncomendaProducts: Product[] = [
   kitPersonalizadoProduct,
+  kitPersonalizado2Product,
   biscoitoAmanteigadoProduct,
   kitBiscoitoComGeleiaProduct,
   centoCoxinhaDeJacaProduct,

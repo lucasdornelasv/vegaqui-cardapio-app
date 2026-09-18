@@ -25,11 +25,14 @@ const FALLBACK_RIGHT_X = 85;
 const FALLBACK_ROW_HALF_SPAN_FRACTION = 0.25;
 const FALLBACK_ORIGIN: Point = { x: 0, y: 0 };
 
-// Abaixo desse valor (em % da largura do contêiner), a margem livre de texto
-// de um lado é considerada "estreita" — sinal de que o layout empilhou imagem
-// e texto (mobile) em vez de colocá-los lado a lado (desktop): o texto ocupa
-// quase toda a largura, e não sobra espaço ao lado dele para o traço passar.
-const NARROW_GUTTER_THRESHOLD = 15;
+// Tolerância (px) para decidir se a imagem termina antes do texto começar
+// (empilhado/mobile) ou se os dois se sobrepõem verticalmente (lado a lado/
+// desktop, onde `align-items: center` centraliza um contra o outro). Medir a
+// relação vertical entre imagem e texto é robusto independente do tamanho do
+// texto — diferente de medir a margem lateral livre, que varia com o
+// conteúdo (um produto com texto curto pode deixar uma margem livre "larga"
+// mesmo empilhado, e faria só aquele produto ser lido como lado a lado).
+const STACKED_VERTICAL_GAP_TOLERANCE_PX = 1;
 
 // Empilhado (mobile): distância fixa da borda lateral da página para o
 // trecho que desce ao lado do texto — perto o bastante pra não parecer solto,
@@ -300,15 +303,15 @@ export class VineConnectorComponent {
         mediaCenterY: (mediaRect.top + mediaRect.bottom) / 2 - containerRect.top,
         mediaBottom: mediaRect.bottom - containerRect.top,
         exitY: Math.max(mediaRect.bottom, contentRect.bottom) - containerRect.top,
-        leftGutter: toPercent(contentRect.left),
-        rightGutter: 100 - toPercent(contentRect.right),
+        // Empilhado: a imagem termina antes do texto começar. Lado a lado:
+        // os dois se sobrepõem verticalmente (centralizados um contra o
+        // outro), então a imagem não termina antes do texto começar.
+        stacked: mediaRect.bottom <= contentRect.top + STACKED_VERTICAL_GAP_TOLERANCE_PX,
         side: product.getSide(),
       };
     });
 
-    const isStacked = measured.every(
-      (row) => Math.max(row.leftGutter, row.rightGutter) < NARROW_GUTTER_THRESHOLD,
-    );
+    const isStacked = measured.every((row) => row.stacked);
 
     const edgeMargin = (STACKED_EDGE_MARGIN_PX / containerRect.width) * 100;
 
@@ -324,7 +327,8 @@ export class VineConnectorComponent {
         // Lado a lado, o próprio centro da imagem já fica bem longe do texto
         // (colunas separadas) — não precisa de mais nada. Empilhado, o texto
         // ocupa quase toda a largura, então o trecho ao lado dele fica preso
-        // à lateral (ver `STACKED_EDGE_MARGIN_PX`), não no centro da imagem.
+        // à lateral (ver `STACKED_EDGE_MARGIN_PX`), não no centro da imagem
+        // (aqui `isStacked` já é o mesmo para todas as fileiras da categoria).
         anchorX: isStacked ? (preferLeft ? edgeMargin : 100 - edgeMargin) : row.mediaCenterX,
       };
     });
@@ -340,7 +344,7 @@ export class VineConnectorComponent {
 
     const rect = origin.getElement().getBoundingClientRect();
     return {
-      x: clamp(((rect.left + rect.width / 2 - containerRect.left) / containerRect.width) * 100),
+      x: clamp(((rect.left - containerRect.left) / containerRect.width) * 100),
       y: rect.bottom - containerRect.top,
     };
   }
